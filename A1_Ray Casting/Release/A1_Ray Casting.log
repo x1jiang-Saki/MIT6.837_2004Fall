@@ -1,0 +1,10 @@
+﻿  Base_Object3D.cpp
+  main.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A1_Ray Casting\main.cpp(32,20): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A1_Ray Casting\main.cpp(34,20): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码
+  3 of 96 functions ( 3.1%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  A1_Ray Casting.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A1_Ray Casting\Release\A1_Ray Casting.exe
