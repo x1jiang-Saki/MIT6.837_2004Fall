@@ -1,0 +1,38 @@
+﻿  Base_Camera.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(6,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(6,93): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(94,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(96,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(113,24): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(113,68): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(113,102): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(204,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  Base_Light.cpp
+  Base_Material.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Camera.cpp(206,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Material.cpp(84,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+  Base_Object3D.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Material.cpp(85,17): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+  main.cpp
+  _glCanvas.cpp
+  _image.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Base_Object3D.cpp(6,27): warning C4305:  “初始化”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(48,19): warning C4101:  “tmp”: 未引用的局部变量
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(103,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(103,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(103,20): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(168,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(168,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  _matrix.cpp
+  _scene_parser.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_image.cpp(168,20): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_scene_parser.cpp(131,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_scene_parser.cpp(462,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_scene_parser.cpp(465,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_scene_parser.cpp(468,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\_scene_parser.cpp(474,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 215 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  A3_Phong Shading.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A3_Phong Shading\Release\A3_Phong Shading.exe
