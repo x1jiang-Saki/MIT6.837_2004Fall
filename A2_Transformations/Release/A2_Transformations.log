@@ -1,0 +1,34 @@
+﻿  Base_Camera.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Base_Camera.cpp(5,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Base_Camera.cpp(5,93): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Base_Camera.cpp(20,24): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Base_Camera.cpp(20,68): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  _image.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Base_Camera.cpp(20,102): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(48,19): warning C4101:  “tmp”: 未引用的局部变量
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(103,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(103,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(103,20): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(168,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(168,28): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  main.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_image.cpp(168,20): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.h(8,10): warning C4067:  预处理器指令后有意外标记 - 应输入换行符
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.h(9,10): warning C4067:  预处理器指令后有意外标记 - 应输入换行符
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\main.cpp(40,20): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  _matrix.cpp
+  Base_Object3D.cpp
+  _scene_parser.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\main.cpp(43,20): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.h(8,10): warning C4067:  预处理器指令后有意外标记 - 应输入换行符
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.h(9,10): warning C4067:  预处理器指令后有意外标记 - 应输入换行符
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.cpp(130,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.cpp(453,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.cpp(456,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.cpp(459,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\_scene_parser.cpp(465,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 179 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  A2_Transformations.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A2_Transformations\Release\A2_Transformations.exe
