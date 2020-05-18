@@ -1,0 +1,76 @@
+
+<!-- saved from url=(0080)http://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/commands.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>6.837 Command Line Arguments</title>
+<link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A.note-anywhere%20%7Bbackground-color%3A%20%23FFF046%3B%7D%0A.note-anywhere%20%7Bcolor%3A%20%23000066%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-family%3A%20Arial%2C%20Helvetica%2C%20sans-serif%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-size%3A%2014px%3B%7D%0A.note-anywhere%20.timestamp%20%7Bbackground-color%3A%20%23DDBB00%3B%7D%0A.note-anywhere%20.timestamp%20%7Bcolor%3A%20%23FFFFFF%3B%7D"><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+
+<body background="./6.837 Command Line Arguments_files/blbkgnd.gif" bgcolor="#FFFFFF" text="#000000">
+
+<h1 style="user-select: auto;">6.837 Intro to Computer Graphics<br style="user-select: auto;">RayTracer Command Line Arguments</h1>
+
+<h3 style="user-select: auto;">Assignment 1</h3>
+<table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;"><tt style="user-select: auto;">-input <em style="user-select: auto;">&lt;filename&gt;</em></tt></td>
+    <td width="450" style="user-select: auto;">the input scene</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-output <em style="user-select: auto;">&lt;filename&gt;</em></tt></td>
+    <td style="user-select: auto;">where the raytraced image should be saved</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-size <em style="user-select: auto;">&lt;width&gt; &lt;height&gt;</em></tt></td>
+    <td style="user-select: auto;">the resolution of the output</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-depth <em style="user-select: auto;">&lt;filename&gt; &lt;t0&gt; &lt;t1&gt;</em></tt></td>
+    <td style="user-select: auto;">where the depth visualization image should be saved, and the range of t values which should be represented with shades of grey</td></tr>
+</tbody></table>
+
+
+<h3 style="user-select: auto;">Assignment 2</h3>
+<table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;"><tt style="user-select: auto;">-normals <em style="user-select: auto;">&lt;filename&gt;</em></tt></td>
+    <td width="450" style="user-select: auto;">where the surface normal visualization image should be saved</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-shade_back</tt></td>
+    <td style="user-select: auto;">perform lighting calculations for both sides of the objects<br style="user-select: auto;">
+        default: light only the "front" side</td></tr>
+</tbody></table>
+
+
+<h3 style="user-select: auto;">Assignment 3</h3>
+<table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;"><tt style="user-select: auto;">-gui</tt></td>
+    <td width="450" style="user-select: auto;">previsualize this scene with OpenGL</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-tessellation <em style="user-select: auto;">&lt;num theta&gt; &lt;num phi&gt;</em></tt></td>
+    <td style="user-select: auto;">resolution of sphere primitive polygonization in OpenGL previsualization</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-gouraud</tt></td>
+    <td style="user-select: auto;">use gouraud interpolation to previsualize sphere primitives<br style="user-select: auto;">
+        default: use flat (polygonal) shading</td></tr>
+</tbody></table>
+
+
+<h3 style="user-select: auto;">Assignment 4</h3>
+<table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;"><tt style="user-select: auto;">-bounces <em style="user-select: auto;">&lt;num&gt;</em></tt></td>
+    <td width="450" style="user-select: auto;">maximum number of bounces traced per eye ray</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-weight <em style="user-select: auto;">&lt;weight&gt;</em></tt></td>
+    <td style="user-select: auto;">the recursive ray tree is pruned for branches which contribute less than this amount to the final pixel color</td></tr>
+</tbody></table>
+
+
+<h3 style="user-select: auto;">Assignment 5</h3>
+<table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;"><tt style="user-select: auto;">-grid <em style="user-select: auto;">&lt;nx&gt; &lt;ny&gt; &lt;nz&gt;</em></tt></td>
+    <td width="450" style="user-select: auto;">the size of the grid</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-visualize_grid</tt></td>
+    <td style="user-select: auto;">visualize the occupied grid cells</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;"><tt style="user-select: auto;">-visualize_grid_count</tt></td>
+    <td style="user-select: auto;">OPTIONAL:  visualize the number of elements per grid cell</td></tr>
+</tbody></table>
+
+
+<h1 style="user-select: auto;">OpenGL Previsualization Options</h1>
+
+<h3 style="user-select: auto;">Assignment 3</h3>
+<p style="user-select: auto;">
+</p><hr style="user-select: auto;"><table border="1" cellspacing="1" cellpadding="10" width="700" style="user-select: auto;">
+<tbody style="user-select: auto;"><tr style="user-select: auto;"><td width="250" style="user-select: auto;">key '<tt style="user-select: auto;">r</tt>'</td>
+    <td width="450" style="user-select: auto;">render the scene</td></tr>
+<tr style="user-select: auto;"><td style="user-select: auto;">key '<tt style="user-select: auto;">t</tt>'</td>
+    <td style="user-select: auto;">visualize the ray tree for the pixel <br style="user-select: auto;">
+        rotate the scene after pressing this button to see the ray tree</td></tr>
+</tbody></table><div class="liner-mini-button" style="display: none;"><a class="liner-mb liner-save-button" style="background-image: url(&#39;chrome-extension://bmhcbmnbenmcecpmpepghooflbehcack/images/mini-btn@3x.png&#39;) !important;"></a></div><div class="liner-mini-tooltip" style="display: none;"><span class="liner-color-yellow liner-mini-color-circle liner-save-button"></span><span class="liner-color-green liner-mini-color-circle liner-save-button"></span><span class="liner-color-orange liner-mini-color-circle liner-save-button"></span><span class="liner-color-violet liner-mini-color-circle liner-save-button"></span><span class="liner-color-blue liner-mini-color-circle liner-save-button"></span><span class="liner-color-pink liner-mini-color-circle liner-save-button"></span></div><div class="liner-tooltip-wrap"><div class="liner-tooltip-menu"><span class="liner-tooltip-color liner-tooltip-icon"></span><span class="liner-tooltip-comment liner-tooltip-icon"></span><span class="liner-tooltip-undo liner-tooltip-icon"></span></div><div class="liner-color-picker"><span class="liner-color-yellow liner-color-circle"></span><span class="liner-color-green liner-color-circle"></span><span class="liner-color-orange liner-color-circle"></span><span class="liner-color-violet liner-color-circle"></span><span class="liner-color-blue liner-color-circle"></span><span class="liner-color-pink liner-color-circle"></span></div><div class="liner-tooltip-arrow"><span class="liner-arrow-down"></span></div></div><div class="liner-comment-box"><div class="liner-comment-line"></div><div class="liner-comment-area"><textarea class="liner-comment-input" placeholder="&#20889;&#35780;&#35770;"></textarea></div></div></body></html>
