@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_glCanvas.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_hit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_matrix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_ray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_rayTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_scene_parser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_vectors.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base_Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base_Light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base_Material.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base_Object3D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_glCanvas.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_matrix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_rayTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_scene_parser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Base_Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Base_Light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Base_Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Base_Object3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RayTracer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="scene4_01_sphere_shadow.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_02_colored_shadows.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_03_mirrored_floor.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_04_reflective_sphere.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_05_transparent_bar.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_06_transparent_bars.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_07_transparent_sphere_1.0.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_08_transparent_sphere_1.1.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_09_transparent_sphere_2.0.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_10_point_light_distance.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_11_point_light_circle.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_12_point_light_circle_d_attenuation.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_13_point_light_circle_d2_attenuation.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="scene4_14_faceted_gem.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
