@@ -1,0 +1,79 @@
+﻿  Base_Camera.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(6,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(6,93): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(56,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(58,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(70,24): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(70,68): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(70,102): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(161,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+  Base_Light.cpp
+  Base_Material.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Camera.cpp(163,18): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Material.cpp(82,16): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Material.cpp(83,17): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Material.cpp(97,26): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  Base_Object3D.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Material.cpp(118,12): warning C4244:  “=”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Object3D.cpp(8,40): warning C4305:  “初始化”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Object3D.cpp(263,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Object3D.cpp(264,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+  Grid.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Base_Object3D.cpp(265,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(71,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(77,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(83,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(92,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(93,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(94,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(146,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(147,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(148,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(149,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(150,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(151,55): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(199,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(200,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(201,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(202,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(203,53): warning C4305:  “参数”: 从“double”到“float”截断
+  main.cpp
+  MarchingInfo.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Grid.cpp(204,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\MarchingInfo.cpp(18,31): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\MarchingInfo.cpp(24,31): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+  RayTracer.cpp
+  _boundingbox.cpp
+  _glCanvas.cpp
+  _image.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\MarchingInfo.cpp(30,31): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(45,17): warning C4101:  “tmp”: 未引用的局部变量
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(101,40): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(101,29): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(101,18): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(166,40): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(166,29): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  _matrix.cpp
+  _rayTree.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_image.cpp(166,18): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(18,6): warning C4101:  “i”: 未引用的局部变量
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(34,6): warning C4101:  “i”: 未引用的局部变量
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(61,38): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(62,27): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(63,27): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(64,27): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(69,38): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(70,27): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(71,27): warning C4305:  “参数”: 从“double”到“float”截断
+  _scene_parser.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_rayTree.cpp(72,27): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_scene_parser.cpp(141,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_scene_parser.cpp(547,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_scene_parser.cpp(550,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_scene_parser.cpp(553,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\_scene_parser.cpp(560,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 422 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  A5_Voxel Rendering.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A5_Voxel Rendering\Release\A5_Voxel Rendering.exe
