@@ -1,0 +1,39 @@
+﻿  Base_Light.cpp
+  Base_Object3D.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Base_Object3D.cpp(9,40): warning C4305:  “初始化”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Base_Object3D.cpp(264,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Base_Object3D.cpp(265,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+  Grid.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Base_Object3D.cpp(266,13): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(73,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(79,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(85,42): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(94,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(95,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(96,61): warning C4244:  “参数”: 从“int”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(163,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(164,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(165,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(166,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(167,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(168,55): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(243,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(244,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(245,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(246,53): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(247,53): warning C4305:  “参数”: 从“double”到“float”截断
+  main.cpp
+  RayTracer.cpp
+  _glCanvas.cpp
+  _scene_parser.cpp
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Grid.cpp(248,54): warning C4305:  “参数”: 从“double”到“float”截断
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\_scene_parser.cpp(141,22): warning C4244:  “初始化”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\_scene_parser.cpp(703,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\_scene_parser.cpp(706,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\_scene_parser.cpp(709,36): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\_scene_parser.cpp(716,45): warning C4244:  “参数”: 从“double”转换到“float”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 572 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  A6_GridAcceleration SolidTextures.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A6_GridAcceleration SolidTextures\Release\A6_GridAcceleration SolidTextures.exe
