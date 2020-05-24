@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A9_Particle Systems", "A9_Particle Systems.vcxproj", "{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Debug|x64.ActiveCfg = Debug|x64
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Debug|x64.Build.0 = Debug|x64
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Debug|x86.ActiveCfg = Debug|Win32
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Debug|x86.Build.0 = Debug|Win32
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Release|x64.ActiveCfg = Release|x64
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Release|x64.Build.0 = Release|x64
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Release|x86.ActiveCfg = Release|Win32
+		{E6B8B96D-78E9-4D17-8E1B-0A3BEDF2B7A0}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33ECF5DB-7D15-4349-A040-F1940C78DFAE}
+	EndGlobalSection
+EndGlobal

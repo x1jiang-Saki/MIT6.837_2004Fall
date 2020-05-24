@@ -1,0 +1,10 @@
+﻿  _glCanvas.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\shared\minwindef.h(130,1): warning C4005:  “APIENTRY”: 宏重定义
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\gl\glut.h(24): message :  参见“APIENTRY”的前一个定义
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um\wingdi.h(36,1): warning C4005:  “WINGDIAPI”: 宏重定义
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\gl\glut.h(45): message :  参见“WINGDIAPI”的前一个定义
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 284 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  A8_Curves Surfaces.vcxproj -> F:\CAD&CG\MIT6.837_2004Fall\A8_Curves Surfaces\Release\A8_Curves Surfaces.exe
