@@ -32,12 +32,21 @@ bool Transform::intersect(const Ray& ray, Hit& hit, float tmin)
 
 void Transform::paint()
 {
+	// You only need to specify that 
+	// you want to change the current object-space-to-world-space 4x4 matrix.
+	
+	// save the current matrix on a matrix stack
 	glPushMatrix();
-	GLfloat* glMatrix = mat.glGet();
+	GLfloat* glMatrix = _matrix.glGet();
+	// Then change the matrix
 	glMultMatrixf(glMatrix);
 	delete[] glMatrix;
 
-	obj->paint();
+	// recursively call the paint() method of the child object
+	_object->paint();
 
+	// restore the previous matrix from the stack
+	// If you do not save and restore the matrix, 
+	// your transformation will be applied to all the following primitives!
 	glPopMatrix();
 }

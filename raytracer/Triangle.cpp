@@ -1,5 +1,5 @@
 #include "Object3D.h"
-#include <gl/gl.h>
+#include <GL/gl.h>
 
 #include "_matrix.h"
 float det3x3(float a1, float a2, float a3,
