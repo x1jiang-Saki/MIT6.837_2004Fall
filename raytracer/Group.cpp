@@ -11,6 +11,12 @@ bool Group::intersect(const Ray& ray, Hit& hit, float tmin)
 	return flag;
 }
 
+void Group::paint()
+{
+	for (int i = 0; i < num_objs; i++)
+		_objects[i]->paint();
+}
+
 // only used in _scene_parser.h
 void Group::addObject(int index, Object3D* obj)
 {

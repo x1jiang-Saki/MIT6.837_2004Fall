@@ -1,4 +1,5 @@
 #include "Object3D.h"
+#include <GL/gl.h>
 #include "_matrix.h"
 
 bool Transform::intersect(const Ray& ray, Hit& hit, float tmin)
@@ -27,4 +28,16 @@ bool Transform::intersect(const Ray& ray, Hit& hit, float tmin)
 		}
 	}
 	return false;
+}
+
+void Transform::paint()
+{
+	glPushMatrix();
+	GLfloat* glMatrix = mat.glGet();
+	glMultMatrixf(glMatrix);
+	delete[] glMatrix;
+
+	obj->paint();
+
+	glPopMatrix();
 }

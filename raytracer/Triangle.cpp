@@ -1,4 +1,6 @@
 #include "Object3D.h"
+#include <gl/gl.h>
+
 #include "_matrix.h"
 float det3x3(float a1, float a2, float a3,
 	float b1, float b2, float b3,
@@ -36,4 +38,16 @@ bool Triangle::intersect(const Ray& ray, Hit& hit, float tmin) {
 		return true;
 	}
 	return false;
+}
+
+void Triangle::paint()
+{
+	_material->glSetMaterial();
+
+	glBegin(GL_TRIANGLES);
+	glNormal3f(_normal.x(), _normal.y(), _normal.z());
+	glVertex3f(_a.x(), _a.y(), _a.z());
+	glVertex3f(_b.x(), _b.y(), _b.z());
+	glVertex3f(_c.x(), _c.y(), _c.z());
+	glEnd();
 }

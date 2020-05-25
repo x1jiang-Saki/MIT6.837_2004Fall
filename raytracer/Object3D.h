@@ -21,6 +21,9 @@ public:
 	// tmin depends on the type of camera (see below)
 	// and is not modified by the intersection routine
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin) = 0;
+	// executes the appropriate OpenGL calls 
+	// to render each object in the pre-visualization interface
+	virtual void paint() = 0;
 };
 
 class Sphere : public Object3D
@@ -38,7 +41,7 @@ public:
 	~Sphere(){}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
-
+	virtual void paint();
 };
 
 class Group : public Object3D
@@ -57,6 +60,8 @@ public:
 	}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
+	virtual void paint();
+
 	void addObject(int index, Object3D* obj);
 };
 
@@ -75,6 +80,7 @@ public:
 	~Plane(){}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
+	virtual void paint();
 };
 
 class Triangle : public Object3D
@@ -93,6 +99,8 @@ public:
 	~Triangle(){}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
+	virtual void paint();
+
 };
 
 class Transform : public Object3D
@@ -107,6 +115,8 @@ public:
 	}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
+	virtual void paint();
+
 };
 
 #endif // _OBJECT3D_H_

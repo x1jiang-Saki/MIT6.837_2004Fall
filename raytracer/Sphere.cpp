@@ -1,5 +1,7 @@
 #include "Object3D.h"
+#include <GL/gl.h>
 
+const float PI = 3.1415926;
 bool Sphere::intersect(const Ray& ray, Hit& hit, float tmin)
 {
 	// Algebratic
@@ -74,3 +76,67 @@ bool Sphere::intersect(const Ray& ray, Hit& hit, float tmin)
 //	return false;
 //}
 
+extern int theta_steps;
+extern int phi_steps;
+extern bool gouraud;
+void Sphere::paint()
+{
+	_material->glSetMaterial();
+
+	float delta_theta = 2 * PI / theta_steps;
+	float delta_phi = PI / phi_steps;
+
+	// initialize all the position for points
+	Vec3f* points = new Vec3f[theta_steps * (phi_steps + 1)];
+	for (int p = 0; p < phi_steps + 1; p++)
+	{
+		for (int t = 0; t < theta_steps; t++)
+		{
+			// from top to button, one circle to one circle
+			int index = theta_steps * p + t;
+
+			float theta = t * delta_theta;
+			float phi = p * delta_phi;
+			Vec3f pos = Vec3f(cos(theta) * sin(phi), cos(phi), sin(theta) * sin(phi));
+			points[index] = _center + pos * _radius;
+			//normal.push_back(pos);
+		}
+	}
+
+	glBegin(GL_QUADS);
+	for (int p = 0; p < phi_steps; p++)
+	{
+		for (int t = 0; t < theta_steps; t++)
+		{
+			int index[4] = {
+				// clock-wise
+				theta_steps * p + t ,
+				theta_steps * (p + 1) + t,
+				theta_steps * (p + 1) + (t + 1) % theta_steps ,
+				theta_steps * p + (t + 1) % theta_steps
+			};
+			Vec3f normal;
+			if (!gouraud)
+			{
+				Vec3f::Cross3(normal, points[index[0]] - points[index[1]], points[index[2]] - points[index[1]]);
+				if (normal.Length() == 0)
+				{
+					Vec3f::Cross3(normal, points[index[1]] - points[index[2]], points[index[3]] - points[index[2]]);
+				}
+			}
+			for (int i = 0; i < 4; i++)
+			{
+				if (gouraud)
+				{
+					normal = points[index[i]] - _center;
+				}
+				normal.Normalize();
+				glNormal3f(normal.x(), normal.y(), normal.z());
+
+				glVertex3f(points[index[i]].x(), points[index[i]].y(), points[index[i]].z());
+			}
+		}
+	}
+
+	glEnd();
+}
