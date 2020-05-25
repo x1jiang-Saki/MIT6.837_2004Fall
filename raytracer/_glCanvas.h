@@ -28,38 +28,45 @@ class SceneParser;
 class GLCanvas {
 
 private:
-  // A reference to the function that performs the raytracing
-  // This gets called from the 'keyboard' rotine
-  static void (*renderFunction)(void);
+	// A reference to the function that performs the raytracing
+	// This gets called from the 'keyboard' routine
+	static void (*renderFunction)(void);
 
-  // A pointer to the global SceneParser
-  static SceneParser *scene;
+	// A reference to the function that traces the ray tree for a single pixel
+	// This gets called from the 'keyboard' routine
+	static void (*traceRayFunction)(float, float);
 
-  // State of the mouse cursor
-  static int mouseButton;
-  static int mouseX;
-  static int mouseY;
+	// A pointer to the global SceneParser
+	static SceneParser* scene;
 
-  // Helper function for the display routine
-  static void drawAxes(void);
+	// State of the mouse cursor
+	static int mouseButton;
+	static int mouseX;
+	static int mouseY;
 
-  // Callback functions for mouse and keyboard events
-  static void display(void);
-  static void reshape(int w, int h);
-  static void mouse(int button, int state, int x, int y);
-  static void motion(int x, int y);
-  static void keyboard(unsigned char key, int x, int y);
+	// Helper function for the display routine
+	static void drawAxes(void);
+
+	// Callback functions for mouse and keyboard events
+	static void display(void);
+	static void reshape(int w, int h);
+	static void mouse(int button, int state, int x, int y);
+	static void motion(int x, int y);
+	static void keyboard(unsigned char key, int x, int y);
 
 public:
-  // Constructor and destructor
-  GLCanvas(void) {
-    renderFunction = NULL;}
- ~GLCanvas(void) { }
+	// Constructor and destructor
+	GLCanvas(void) {
+		renderFunction = NULL;
+		traceRayFunction = NULL;
+	}
+	~GLCanvas(void) { }
 
-  // Set up the canvas and enter the rendering loop
-  // Note that this function will not return but can be
-  // terminated by calling 'exit(0)'
-  void initialize(SceneParser *_scene, void (*_renderFunction)(void));
+	// Set up the canvas and enter the rendering loop
+	// Note that this function will not return but can be
+	// terminated by calling 'exit(0)'
+
+	void initialize(SceneParser* _scene, void (*_renderFunction)(void), void (*_traceRayFunction)(float, float));
 };
 
 // ====================================================================
