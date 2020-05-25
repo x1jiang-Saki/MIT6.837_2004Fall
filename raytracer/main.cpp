@@ -1,6 +1,7 @@
 #include "_scene_parser.h"
 #include "_image.h"
 #include <algorithm>
+#include "_glCanvas.h"
 // A1
 char* input_file = nullptr;
 int width = 100;
@@ -14,6 +15,12 @@ char* depth_file = nullptr;
 char* normal_file = nullptr;
 bool shade_back = false;
 
+// A3
+bool gui = false;
+bool gouraud = false;
+int theta_steps = 10;
+int phi_steps = 5;
+
 SceneParser* scene;
 
 void parseCode(int argc, char** argv);
@@ -23,7 +30,14 @@ int main(int argc, char** argv)
 {
 	parseCode(argc, argv);
 	scene = new SceneParser(input_file);
-	render();
+
+	if (gui)
+	{
+		GLCanvas canvas;
+		canvas.initialize(scene, render);
+	}
+	else
+		render();
 	
 	delete scene;
 	return 0;
@@ -62,6 +76,20 @@ void parseCode(int argc, char** argv)
 		}
 		else if (!strcmp(argv[i], "-shade_back")) {
 			shade_back = true;
+		}
+		// A3
+		else if (!strcmp(argv[i], "-gui")) {
+			gui = true;
+		}
+		else if (!strcmp(argv[i], "-tessellation")) {
+			i++; assert(i < argc);
+			theta_steps = atof(argv[i]);
+			i++; assert(i < argc);
+			phi_steps = atof(argv[i]);
+
+		}
+		else if (!strcmp(argv[i], "-gouraud")) {
+			gouraud = true;
 		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
@@ -109,16 +137,10 @@ void render()
 					Light* curLight = scene->getLight(lit);
 					Vec3f pos = hit.getIntersectionPoint();
 					Vec3f L, lightCol;
-					curLight->getIllumination(pos, L, lightCol);
+					float distance; // now we only have Directional Light
+					curLight->getIllumination(pos, L, lightCol, distance);
 
-					float diffuse = N.Dot3(L);
-					if (shade_back)
-						diffuse = abs(diffuse);
-					else
-						diffuse = max(0.0f, diffuse);
-					Vec3f diffuseTerm = diffuse * lightCol * baseColor;
-
-					resultCol += diffuseTerm;
+					resultCol += hit.getMaterial()->Shade(ray, hit, L, lightCol);
 				}
 				
 				float t = hit.getT();

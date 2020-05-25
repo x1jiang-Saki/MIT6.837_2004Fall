@@ -45,6 +45,9 @@
     <ClInclude Include="Light.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="_glCanvas.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_image.cpp">
@@ -78,6 +81,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PhongMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_glCanvas.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

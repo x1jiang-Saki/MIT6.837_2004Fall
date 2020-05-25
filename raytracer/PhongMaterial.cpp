@@ -71,3 +71,20 @@ void PhongMaterial::glSetMaterial(void) const {
 
 #endif
 }
+
+Vec3f PhongMaterial::Shade(const Ray& ray, const Hit& hit, const Vec3f& dirToLight, const Vec3f& lightColor) const
+{
+	Vec3f L = dirToLight;
+	Vec3f N = hit.getNormal();
+	Vec3f V = -1.0 * ray.getDirection();
+	V.Normalize();
+	
+	Vec3f diffuseTerm = _diffuseColor * lightColor * max(N.Dot3(L), 0.0f);
+	
+	Vec3f H = L + V;
+	H.Normalize();
+	Vec3f specularTerm = _specularColor * lightColor * pow(max(N.Dot3(H), 0.0f), _exponent);
+	
+	Vec3f resultCol = diffuseTerm + specularTerm;
+	return resultCol;
+}

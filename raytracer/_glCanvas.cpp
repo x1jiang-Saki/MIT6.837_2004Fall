@@ -1,8 +1,10 @@
-#include "glCanvas.h"
-#include "scene_parser.h"
-#include "light.h"
-#include "camera.h"
-#include "group.h"
+#define GLUT_DISABLE_ATEXIT_HACK
+
+#include "_glCanvas.h"
+#include "_scene_parser.h"
+#include "Light.h"
+#include "Camera.h"
+#include "Object3D.h"
 
 // Included files for OpenGL Rendering
 #include <GL/gl.h>
