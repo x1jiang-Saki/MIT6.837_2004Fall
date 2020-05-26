@@ -72,7 +72,7 @@ bool Grid::intersect(const Ray& ray, Hit& hit, float tmin)
 	return false;
 }
 
-void Grid::paint() const
+void Grid::paint()
 {
 	Vec3f minP = _boundingBox->getMin();
 	Vec3f maxP = _boundingBox->getMax();

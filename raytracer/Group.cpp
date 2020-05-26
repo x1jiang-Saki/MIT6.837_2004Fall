@@ -18,7 +18,7 @@ void Group::paint()
 }
 
 void Group::insertIntoGrid(Grid* grid, Matrix* matrix) {
-	for (int i = 0; i < num_objs; ++i) {
+	for (int i = 0; i < num_objs; i++) {
 		_objects[i]->insertIntoGrid(grid, matrix);
 	}
 }

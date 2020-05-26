@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "_glCanvas.h"
 #include "RayTracer.h"
+
 // A1
 char* input_file = nullptr;
 int width = 100;
@@ -28,6 +29,9 @@ float cutoff_weight = 0.01;
 bool shadows = false;
 bool useTransparentShadows = true; // actually not working QAQ
 
+// A5
+bool visualize_grid = false;
+int nx = 0, ny = 0, nz = 0;
 
 SceneParser* scene;
 
@@ -40,10 +44,16 @@ int main(int argc, char** argv)
 	parseCode(argc, argv);
 	scene = new SceneParser(input_file);
 
+	Grid* grid = nullptr;
+	if (nx != 0) {
+		grid = new Grid(scene->getGroup()->getBoundingBox(), nx, ny, nz);
+		scene->getGroup()->insertIntoGrid(grid, nullptr);
+	}
+
 	if (gui)
 	{
 		GLCanvas canvas;
-		canvas.initialize(scene, render, traceRay);
+		canvas.initialize(scene, render, traceRay, grid, visualize_grid);
 	}
 	else
 		render();
@@ -112,6 +122,21 @@ void parseCode(int argc, char** argv)
 			i++; assert(i < argc);
 			cutoff_weight = atof(argv[i]);
 		}
+		// A5
+		else if (!strcmp(argv[i], "-grid")) {
+			i++;
+			assert(i < argc);
+			nx = atoi(argv[i]);
+			i++;
+			assert(i < argc);
+			ny = atoi(argv[i]);
+			i++;
+			assert(i < argc);
+			nz = atoi(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-visualize_grid")) {
+			visualize_grid = true;
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
@@ -170,4 +195,7 @@ void traceRay(float x, float y)
 	Hit hit(INFINITY, nullptr, Vec3f(0.0, 0.0, 0.0));
 
 	Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, cutoff_weight, 0.0, hit);
+
+	Hit hit2(INFINITY, nullptr, Vec3f(0.0, 0.0, 0.0));
+	raytracer._grid->intersect(ray, hit2, 0.001f);
 }

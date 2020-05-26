@@ -9,6 +9,7 @@ extern int nx, ny, nz;
 // computes the radiance (color) along a ray
 class RayTracer
 {
+public:
 	SceneParser* _scene;
 	// a stopping criterion to prevent infinite recursion.
 	int max_bounces;
@@ -16,7 +17,6 @@ class RayTracer
 	bool _shadows;
 	Grid* _grid;
 
-public:
 	RayTracer(SceneParser* scene, int maxBounces, float cutoffWeight, bool shadows)
 	{
 		_scene = scene;

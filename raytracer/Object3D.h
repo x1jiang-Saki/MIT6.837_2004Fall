@@ -14,6 +14,8 @@ enum ObjectType {
 	TriangleObj
 };
 
+class Grid;
+
 class Object3D
 {
 protected:
@@ -228,7 +230,7 @@ public:
 	~Grid() {}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
-	virtual void paint() const;
+	virtual void paint();
 
 	void initializeRayMarch(MarchingInfo& mi, const Ray& ray, float tmin) const;
 

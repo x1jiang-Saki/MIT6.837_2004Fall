@@ -54,6 +54,15 @@
     <ClInclude Include="RayTracer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="_boundingbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_object3dvector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_marchingInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_image.cpp">
@@ -102,6 +111,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RayTracer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_boundingbox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_marchingInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Object3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -24,17 +24,22 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="Object3D.h" />
     <ClInclude Include="RayTracer.h" />
+    <ClInclude Include="_boundingbox.h" />
     <ClInclude Include="_glCanvas.h" />
     <ClInclude Include="_hit.h" />
     <ClInclude Include="_image.h" />
+    <ClInclude Include="_marchingInfo.h" />
     <ClInclude Include="_matrix.h" />
+    <ClInclude Include="_object3dvector.h" />
     <ClInclude Include="_ray.h" />
     <ClInclude Include="_rayTree.h" />
     <ClInclude Include="_scene_parser.h" />
     <ClInclude Include="_vectors.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Object3D.cpp" />
     <ClCompile Include="OrthographicCamera.cpp" />
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="main.cpp" />
@@ -45,8 +50,10 @@
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="_boundingbox.cpp" />
     <ClCompile Include="_glCanvas.cpp" />
     <ClCompile Include="_image.cpp" />
+    <ClCompile Include="_marchingInfo.cpp" />
     <ClCompile Include="_matrix.cpp" />
     <ClCompile Include="_rayTree.cpp" />
     <ClCompile Include="_scene_parser.cpp" />
