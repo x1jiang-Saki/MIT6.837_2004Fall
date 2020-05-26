@@ -38,7 +38,10 @@ public:
 	// weight: indicates the percent contribution of this ray to the final pixel color
 	// indexOfRefraction: To refract rays through transparent objects
 	// hit: and returns the closest intersection in hit
-	Vec3f traceRay(Ray& ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit& hit) const;
+	Vec3f traceRay(Ray& ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit& hit);
+	
+	Vec3f RayCast(Ray& ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit& hit);
+	Vec3f RayCastFast(Ray& ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit& hit);
 };
 
 #endif // !_RAY_TRACER_H_

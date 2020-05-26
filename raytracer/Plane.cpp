@@ -51,3 +51,7 @@ void Plane::paint()
 	glVertex3f(pos[3].x(), pos[3].y(), pos[3].z());
 	glEnd();
 }
+
+void Plane::insertIntoGrid(Grid* grid, Matrix* matrix) {
+	grid->infinitePrimitives.push_back(this);
+}

@@ -4,20 +4,11 @@
 #define min3(a, b, c) (((a)<(b))?(((a)<(c))?(a):(c)):(((b)<(c))?(b):(c)))
 #define max3(a, b, c) (((a)>(b))?(((a)>(c))?(a):(c)):(((b)>(c))?(b):(c)))
 
+extern bool visualize_grid;
 bool Grid::intersect(const Ray& ray, Hit& hit, float tmin)
 {
-	Vec3f minP = _boundingBox->getMin();
-	Vec3f maxP = _boundingBox->getMax();
-	float cellx = (maxP - minP).x() / float(_nx);
-	float celly = (maxP - minP).y() / float(_ny);
-	float cellz = (maxP - minP).z() / float(_nz);
-
-	//debug inside
-	//Vec3f rd = Vec3f(1, 1, 1);
-	//rd.Normalize();
-	//Ray r2(Vec3f(0, 0, 0), rd);
-	//MarchingInfo mi;
-	//initializeRayMarch(mi, r2, tmin);
+	bool flag_grid = false;
+	is_intersected.clear();
 
 	MarchingInfo mi;
 	initializeRayMarch(mi, ray, tmin);
@@ -29,44 +20,66 @@ bool Grid::intersect(const Ray& ray, Hit& hit, float tmin)
 			int j = mi.j;
 			int k = mi.k;
 			int index = _nx * _ny * k + _nx * j + i;
-			if (!_cells[index].empty()) {
+			//visualize_grid = false;
+			if (!visualize_grid && !_cells[index].empty()) {
+				for (Object3D* obj : _cells[index]) {
+					if (is_intersected.find(obj) != is_intersected.end())
+						continue;
+					if (!obj->intersect(ray, hit, tmin))
+						is_intersected.insert(obj);
+				}
+				if (hit.getT() < min3(mi.t_next_x, mi.t_next_y, mi.t_next_z) + 0.0001) {
+					flag_grid = true;
+					break;
+				}
+			}
+			//visualize_grid = true;
+			if (visualize_grid && !_cells[index].empty()) {
 				PhongMaterial* m;
 				switch (_cells[index].size()) {
-					case 1: m = new PhongMaterial(Vec3f(1, 1, 1)); break;
-					case 2: m = new PhongMaterial(Vec3f(1, 0, 1)); break;
-					case 3: m = new PhongMaterial(Vec3f(0, 1, 1)); break;
-					case 4: m = new PhongMaterial(Vec3f(1, 1, 0)); break;
-					case 5: m = new PhongMaterial(Vec3f(0.3, 0, 0.7)); break;
-					case 6: m = new PhongMaterial(Vec3f(0.7, 0, 0.3)); break;
-					case 7: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
-					case 8: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
-					case 9: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
-					case 10: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
-					case 11: m = new PhongMaterial(Vec3f(0, 1, 0)); break;
-					case 12: m = new PhongMaterial(Vec3f(0, 0, 1)); break;
-					default: m = new PhongMaterial(Vec3f(1, 0, 0)); break;
+				case 1: m = new PhongMaterial(Vec3f(1, 1, 1)); break;
+				case 2: m = new PhongMaterial(Vec3f(1, 0, 1)); break;
+				case 3: m = new PhongMaterial(Vec3f(0, 1, 1)); break;
+				case 4: m = new PhongMaterial(Vec3f(1, 1, 0)); break;
+				case 5: m = new PhongMaterial(Vec3f(0.3, 0, 0.7)); break;
+				case 6: m = new PhongMaterial(Vec3f(0.7, 0, 0.3)); break;
+				case 7: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
+				case 8: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
+				case 9: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
+				case 10: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
+				case 11: m = new PhongMaterial(Vec3f(0, 1, 0)); break;
+				case 12: m = new PhongMaterial(Vec3f(0, 0, 1)); break;
+				default: m = new PhongMaterial(Vec3f(1, 0, 0)); break;
 				}
 				hit.set(mi.t_cur, m, mi.normal, ray);
 				return true;
-
-				//OpenGL
-				//Vec3f a = minP + Vec3f(i * cellx, j * celly, k * cellz);
-				//Vec3f b = minP + Vec3f((i + 1) * cellx, j * celly, k * cellz);
-				//Vec3f c = minP + Vec3f((i + 1) * cellx, (j + 1) * celly, k * cellz);
-				//Vec3f d = minP + Vec3f(i * cellx, (j + 1) * celly, k * cellz);
-				//Vec3f e = minP + Vec3f(i * cellx, j * celly, (k + 1) * cellz);
-				//Vec3f f = minP + Vec3f((i + 1) * cellx, j * celly, (k + 1) * cellz);
-				//Vec3f g = minP + Vec3f((i + 1) * cellx, (j + 1) * celly, (k + 1) * cellz);
-				//Vec3f h = minP + Vec3f(i * cellx, (j + 1) * celly, (k + 1) * cellz);
-				//m = new PhongMaterial(Vec3f(1.0f * rand() / RAND_MAX, 1.0f * rand() / RAND_MAX, 1.0f * rand() / RAND_MAX));
-				//RayTree::AddHitCellFace(a, b, c, d, Vec3f(0, 0, -1), m);
-				//RayTree::AddHitCellFace(e, f, g, h, Vec3f(0, 0, 1), m);
-				//RayTree::AddHitCellFace(b, c, g, f, Vec3f(1, 0, 0), m);
-				//RayTree::AddHitCellFace(a, d, h, e, Vec3f(-1, 0, 0), m);
-				//RayTree::AddHitCellFace(a, b, f, e, Vec3f(0, -1, 0), m);
-				//RayTree::AddHitCellFace(c, d, h, g, Vec3f(0, 1, 0), m);
 			}
 			mi.nextCell();
+		}
+	}
+
+	//infinitePrimitives
+	if (!visualize_grid) {
+		bool flag_infinite = false;
+		Hit hit_infinite(INFINITY, nullptr, Vec3f());
+		for (Object3D* obj : infinitePrimitives) {
+			if (obj->intersect(ray, hit_infinite, tmin)) {
+				flag_infinite = true;
+			}
+		}
+		if (!flag_infinite) {
+			return flag_grid;
+		}
+		if (!flag_grid) {
+			hit = hit_infinite;
+			return flag_infinite;
+		}
+		if (hit_infinite.getT() < hit.getT()) {
+			hit = hit_infinite;
+			return true;
+		}
+		else {
+			return true;
 		}
 	}
 	return false;

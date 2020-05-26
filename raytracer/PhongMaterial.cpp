@@ -20,14 +20,14 @@ void PhongMaterial::glSetMaterial(void) const {
 	GLfloat one[4] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat zero[4] = { 0.0, 0.0, 0.0, 0.0 };
 	GLfloat specular[4] = {
-	  getSpecularColor().r(),
-	  getSpecularColor().g(),
-	  getSpecularColor().b(),
+	  _specularColor.r(),
+	  _specularColor.g(),
+	  _specularColor.b(),
 	  1.0 };
 	GLfloat diffuse[4] = {
-	  getDiffuseColor().r(),
-	  getDiffuseColor().g(),
-	  getDiffuseColor().b(),
+	  _diffuseColor.r(),
+	  _diffuseColor.g(),
+	  _diffuseColor.b(),
 	  1.0 };
 
 	// NOTE: GL uses the Blinn Torrance version of Phong...      
