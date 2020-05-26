@@ -2,11 +2,14 @@
 #include <GL/gl.h>
 
 #include "_matrix.h"
+#include "_raytracing_stats.h"
 float det3x3(float a1, float a2, float a3,
 	float b1, float b2, float b3,
 	float c1, float c2, float c3);
 
 bool Triangle::intersect(const Ray& ray, Hit& hit, float tmin) {
+	RayTracingStats::IncrementNumIntersections();
+
 	Vec3f ro = ray.getOrigin();
 	Vec3f rd = ray.getDirection();
 	float abx = _a.x() - _b.x();
@@ -101,7 +104,10 @@ void Triangle::insertIntoGrid(Grid* grid, Matrix* matrix) {
 		for (int j = start_j; j <= end_j; ++j) {
 			for (int i = start_i; i <= end_i; ++i) {
 				int index = nx * ny * k + nx * j + i;
-				grid->_cells[index].push_back(this);
+				if (matrix)
+					grid->_cells[index].push_back(new Transform(*matrix, this));
+				else
+					grid->_cells[index].push_back(this);
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 #include "_vectors.h"
 #include "_ray.h"
 #include "_hit.h"
+#include "_matrix.h"
 
 class Material 
 {

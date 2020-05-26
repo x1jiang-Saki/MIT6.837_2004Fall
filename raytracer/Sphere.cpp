@@ -1,9 +1,11 @@
 #include "Object3D.h"
 #include <GL/gl.h>
+#include "_raytracing_stats.h"
 
 const float PI = 3.1415926;
 bool Sphere::intersect(const Ray& ray, Hit& hit, float tmin)
 {
+	RayTracingStats::IncrementNumIntersections();
 	// Algebratic
 	Vec3f ro = ray.getOrigin() - _center;
 	Vec3f rd = ray.getDirection();

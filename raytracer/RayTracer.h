@@ -32,7 +32,7 @@ public:
 		else
 			_grid = nullptr;
 	}
-	~RayTracer(){}
+	~RayTracer() { delete _grid; }
 
 	// bounces: the current number of bounces 
 	// weight: indicates the percent contribution of this ray to the final pixel color

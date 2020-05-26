@@ -39,8 +39,8 @@ float Marble::_noise(const Vec3f& tsCoord) const {
 
 float Wood::_noise(const Vec3f& tsCoord) const {
 	float l = tsCoord.x() * tsCoord.x() + tsCoord.z() * tsCoord.z();
-	float s = sinf(_freq * sqrtf(l) + _ampl * Noise::_noise(tsCoord) + tsCoord.y() * 0.4f);
+	float s = sinf(_frequency * sqrtf(l) + _amplitude * Noise::_noise(tsCoord) + tsCoord.y() * 0.4f);
 	float sign = s < 0 ? -1.f : 1.f;
 	s = fabsf(s);
-	return sign * (1 - std::powf(1 - s, _freq));
+	return sign * (1 - std::powf(1 - s, _frequency));
 }

@@ -70,7 +70,7 @@ void Object3D::insertIntoGrid(Grid* grid, Matrix* matrix) {
 		for (int j = start_j; j <= end_j; ++j) {
 			for (int i = start_i; i <= end_i; ++i) {
 				int index = nx * ny * k + nx * j + i;
-				grid->_cells[index].push_back(this);
+				grid->_cells[index].push_back(new Transform(*matrix, this));
 			}
 		}
 	}

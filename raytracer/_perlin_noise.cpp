@@ -2,7 +2,7 @@
 // http://mrl.nyu.edu/~perlin/noise/
 // translated to C++ for 6.837
 
-#include "perlin_noise.h"
+#include "_perlin_noise.h"
 
 // permutation
 int PerlinNoise::p[512] =

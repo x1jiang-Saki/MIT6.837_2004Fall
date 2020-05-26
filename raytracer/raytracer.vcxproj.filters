@@ -63,6 +63,12 @@
     <ClInclude Include="_marchingInfo.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="_raytracing_stats.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_perlin_noise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_image.cpp">
@@ -123,6 +129,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Object3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_raytracing_stats.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_perlin_noise.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ProceduralMaterial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

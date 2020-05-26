@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "_glCanvas.h"
 #include "RayTracer.h"
+#include "_raytracing_stats.h"
 
 // A1
 char* input_file = nullptr;
@@ -27,11 +28,14 @@ int phi_steps = 5;
 int max_bounces = 0;
 float cutoff_weight = 0.01;
 bool shadows = false;
-bool useTransparentShadows = true; // actually not working QAQ
+bool useTransparentShadows = false; // actually not working QAQ
 
 // A5
 bool visualize_grid = false;
 int nx = 0, ny = 0, nz = 0;
+
+// A6
+bool stats = false;
 
 SceneParser* scene;
 
@@ -44,14 +48,13 @@ int main(int argc, char** argv)
 	parseCode(argc, argv);
 	scene = new SceneParser(input_file);
 
-	Grid* grid = nullptr;
-	if (nx != 0) {
-		grid = new Grid(scene->getGroup()->getBoundingBox(), nx, ny, nz);
-		scene->getGroup()->insertIntoGrid(grid, nullptr);
-	}
-
 	if (gui)
 	{
+		Grid* grid = nullptr;
+		if (nx != 0) {
+			grid = new Grid(scene->getGroup()->getBoundingBox(), nx, ny, nz);
+			scene->getGroup()->insertIntoGrid(grid, nullptr);
+		}
 		GLCanvas canvas;
 		canvas.initialize(scene, render, traceRay, grid, visualize_grid);
 	}
@@ -137,6 +140,10 @@ void parseCode(int argc, char** argv)
 		else if (!strcmp(argv[i], "-visualize_grid")) {
 			visualize_grid = true;
 		}
+		// A6
+		else if (!strcmp(argv[i], "-stats")) {
+			stats = true;
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
@@ -156,14 +163,21 @@ void render()
 	output_normal.SetAllPixels(Vec3f(0.0, 0.0, 0.0));
 
 	RayTracer raytracer(scene, max_bounces, cutoff_weight, shadows);
+	if (nx != 0)
+		RayTracingStats::Initialize(width, height, raytracer._grid->getBoundingBox(), nx, ny, nz);
+	else
+		RayTracingStats::Initialize(width, height, nullptr, 0, 0, 0);
+
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++)
 		{
+			RayTracingStats::IncrementNumNonShadowRays();
+
 			Ray ray = camera->generateRay(Vec2f(float(i) / width, float(j) / height));
 			Hit hit(INFINITY, nullptr,Vec3f(0.0,0.0,0.0));
 			
-			Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, 0.0, 1.0, hit);
+			Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, 1.0, 1.0, hit);
 
 			float t = hit.getT();
 			if (t > depth_max) t = depth_max;
@@ -184,6 +198,7 @@ void render()
 	if (output_file) output_scene.SaveTGA(output_file);
 	if (depth_file) output_depth.SaveTGA(depth_file);
 	if (normal_file) output_normal.SaveTGA(normal_file);
+	if (stats) RayTracingStats::PrintStatistics();
 }
 
 void traceRay(float x, float y)
@@ -197,5 +212,5 @@ void traceRay(float x, float y)
 	Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, cutoff_weight, 0.0, hit);
 
 	Hit hit2(INFINITY, nullptr, Vec3f(0.0, 0.0, 0.0));
-	raytracer._grid->intersect(ray, hit2, 0.001f);
+	raytracer._grid->intersect(ray, hit2, 0.0001f);
 }

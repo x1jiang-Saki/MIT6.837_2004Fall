@@ -1,9 +1,12 @@
 #include "Object3D.h"
 #include <GL/gl.h>
+#include "_raytracing_stats.h"
 
 // n*P = d
 bool Plane::intersect(const Ray& ray, Hit& hit, float tmin)
 {
+	RayTracingStats::IncrementNumIntersections();
+
 	Vec3f ro = ray.getOrigin();
 	Vec3f rd = ray.getDirection();
 

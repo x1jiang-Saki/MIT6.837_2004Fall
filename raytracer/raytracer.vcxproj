@@ -31,7 +31,9 @@
     <ClInclude Include="_marchingInfo.h" />
     <ClInclude Include="_matrix.h" />
     <ClInclude Include="_object3dvector.h" />
+    <ClInclude Include="_perlin_noise.h" />
     <ClInclude Include="_ray.h" />
+    <ClInclude Include="_raytracing_stats.h" />
     <ClInclude Include="_rayTree.h" />
     <ClInclude Include="_scene_parser.h" />
     <ClInclude Include="_vectors.h" />
@@ -46,6 +48,7 @@
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PhongMaterial.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="ProceduralMaterial.cpp" />
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -55,6 +58,8 @@
     <ClCompile Include="_image.cpp" />
     <ClCompile Include="_marchingInfo.cpp" />
     <ClCompile Include="_matrix.cpp" />
+    <ClCompile Include="_perlin_noise.cpp" />
+    <ClCompile Include="_raytracing_stats.cpp" />
     <ClCompile Include="_rayTree.cpp" />
     <ClCompile Include="_scene_parser.cpp" />
   </ItemGroup>
