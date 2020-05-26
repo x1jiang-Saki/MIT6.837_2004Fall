@@ -38,6 +38,27 @@ bool transmit(const Vec3f& normal, const Vec3f& incoming,float index_i, float in
 extern bool useTransparentShadows;
 Vec3f RayTracer::traceRay(Ray& ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit& hit) const
 {
+	//grid shading
+	if (nx != 0) {
+		if (_grid->intersect(ray, hit, tmin)) {
+			Vec3f color(0.0, 0.0, 0.0);
+			Vec3f pos = hit.getIntersectionPoint();
+			color += _scene->getAmbientLight() * hit.getMaterial()->getDiffuseColor();
+			for (int k = 0; k < _scene->getNumLights(); ++k) {
+				Light* light = _scene->getLight(k);
+				Vec3f l, lightColor;
+				float dis;
+				light->getIllumination(pos, l, lightColor, dis);
+				color += hit.getMaterial()->Shade(ray, hit, l, lightColor);
+			}
+			return color;
+		}
+		else {
+			return _scene->getBackgroundColor();
+		}
+	}
+
+
 	if (bounces > max_bounces)
 		return Vec3f(0.0, 0.0, 0.0);
 

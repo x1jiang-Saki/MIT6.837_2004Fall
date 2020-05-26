@@ -6,13 +6,12 @@
 #include "_matrix.h"
 #include "_boundingbox.h"
 #include <vector>
+#include "_marchingInfo.h"
 
 enum ObjectType {
 	SphereObj, 
 	PlaneObj, 
-	TriangleObj, 
-	Grid,
-	Group
+	TriangleObj
 };
 
 class Object3D
@@ -38,6 +37,7 @@ public:
 	// executes the appropriate OpenGL calls 
 	// to render each object in the pre-visualization interface
 	virtual void paint() = 0;
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix);
 };
 
 class Sphere : public Object3D
@@ -61,6 +61,7 @@ public:
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix);
 };
 
 class Group : public Object3D
@@ -72,7 +73,6 @@ public:
 	{
 		num_objs = objNum;
 		_objects = new Object3D*[num_objs];
-		_type = ObjectType::Group;
 		_boundingBox = new BoundingBox(
 			Vec3f(INFINITY, INFINITY, INFINITY),
 			Vec3f(-INFINITY, -INFINITY, -INFINITY)
@@ -85,6 +85,7 @@ public:
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix);
 
 	void addObject(int index, Object3D* obj);
 };
@@ -110,6 +111,7 @@ public:
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix){}
 };
 
 class Triangle : public Object3D
@@ -148,6 +150,7 @@ public:
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix);
 
 };
 
@@ -204,25 +207,15 @@ public:
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
+	virtual void insertIntoGrid(Grid* grid, Matrix* matrix);
 
 };
 
-class MarchingInfo 
-{
-public:
-	float tmin;
-	int index[3];
-	Vec3f t_next, d_t;
-	int sign[3];
-	Vec3f normal_to_cell;
-	bool hit = false;
-};
 class Grid : public Object3D
 {
+public:
 	int _nx, _ny, _nz;
 	std::vector<std::vector<Object3D*> > _cells;
-
-public:
 	Grid(BoundingBox* bb, int nx, int ny, int nz)
 	{
 		_nx = nx;
@@ -231,7 +224,6 @@ public:
 
 		_cells.resize(_nx * _ny * _ny);
 		_boundingBox = bb;
-		_type = ObjectType::Grid;
 	}
 	~Grid() {}
 

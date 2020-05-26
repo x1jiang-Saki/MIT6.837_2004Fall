@@ -140,3 +140,33 @@ void Sphere::paint()
 
 	glEnd();
 }
+
+void Sphere::insertIntoGrid(Grid* grid, Matrix* matrix) {
+	if (matrix) {
+		Object3D::insertIntoGrid(grid, matrix);
+		return;
+	}
+	BoundingBox* grid_bb = grid->getBoundingBox();
+	Vec3f grid_min = grid_bb->getMin();
+	Vec3f grid_max = grid_bb->getMax();
+	int nx = grid->_nx;
+	int ny = grid->_ny;
+	int nz = grid->_nz;
+	float cellx = (grid_max - grid_min).x() / float(nx);
+	float celly = (grid_max - grid_min).y() / float(ny);
+	float cellz = (grid_max - grid_min).z() / float(nz);
+	float diagonal = sqrt(cellx * cellx + celly * celly + cellz * cellz);
+	for (int k = 0; k < nz; ++k) {
+		for (int j = 0; j < ny; ++j) {
+			for (int i = 0; i < nx; ++i) {
+				float x = (i + 0.5) * cellx;
+				float y = (j + 0.5) * celly;
+				float z = (k + 0.5) * cellz;
+				if ((Vec3f(x, y, z) - (_center - grid_min)).Length() < _radius + diagonal / 2) {
+					int index = nx * ny * k + nx * j + i;
+					grid->_cells[index].push_back(this);
+				}
+			}
+		}
+	}
+}

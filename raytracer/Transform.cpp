@@ -50,3 +50,13 @@ void Transform::paint()
 	// your transformation will be applied to all the following primitives!
 	glPopMatrix();
 }
+
+void Transform::insertIntoGrid(Grid* grid, Matrix* matrix) {
+	if (matrix) {
+		Matrix t = (*matrix) * _matrix;
+		_object->insertIntoGrid(grid, &t);
+	}
+	else {
+		_object->insertIntoGrid(grid, &_matrix);
+	}
+}

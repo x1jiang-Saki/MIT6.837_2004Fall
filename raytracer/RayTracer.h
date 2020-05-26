@@ -2,6 +2,10 @@
 #define _RAY_TRACER_H_
 
 #include "_scene_parser.h"
+#include "Object3D.h"
+
+extern int nx, ny, nz;
+
 // computes the radiance (color) along a ray
 class RayTracer
 {
@@ -10,6 +14,7 @@ class RayTracer
 	int max_bounces;
 	float cutoff_weight;
 	bool _shadows;
+	Grid* _grid;
 
 public:
 	RayTracer(SceneParser* scene, int maxBounces, float cutoffWeight, bool shadows)
@@ -18,6 +23,14 @@ public:
 		max_bounces = maxBounces;
 		cutoff_weight = cutoffWeight;
 		_shadows = shadows;
+
+		if (nx != 0)
+		{
+			_grid = new Grid(_scene->getGroup()->getBoundingBox(), nx, ny, nz);
+			_scene->getGroup()->insertIntoGrid(_grid, nullptr);
+		}
+		else
+			_grid = nullptr;
 	}
 	~RayTracer(){}
 

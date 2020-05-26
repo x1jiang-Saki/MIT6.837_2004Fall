@@ -1,6 +1,5 @@
 #include "Object3D.h"
 #include <gl\GL.h>
-#include "_marchingInfo.h"
 
 #define min3(a, b, c) (((a)<(b))?(((a)<(c))?(a):(c)):(((b)<(c))?(b):(c)))
 #define max3(a, b, c) (((a)>(b))?(((a)>(c))?(a):(c)):(((b)>(c))?(b):(c)))
@@ -21,33 +20,33 @@ bool Grid::intersect(const Ray& ray, Hit& hit, float tmin)
 	//initializeRayMarch(mi, r2, tmin);
 
 	MarchingInfo mi;
-	initializeRayMarch(mi, r, tmin);
+	initializeRayMarch(mi, ray, tmin);
 
 	//ray trace
 	if (mi.t_cur < hit.getT()) {
-		while (mi.i >= 0 && mi.j >= 0 && mi.k >= 0 && mi.i < nx && mi.j < ny && mi.k < nz) {
+		while (mi.i >= 0 && mi.j >= 0 && mi.k >= 0 && mi.i < _nx && mi.j < _ny && mi.k < _nz) {
 			int i = mi.i;
 			int j = mi.j;
 			int k = mi.k;
-			int index = nx * ny * k + nx * j + i;
-			if (!opaque[index].empty()) {
+			int index = _nx * _ny * k + _nx * j + i;
+			if (!_cells[index].empty()) {
 				PhongMaterial* m;
-				switch (opaque[index].size()) {
-				case 1: m = new PhongMaterial(Vec3f(1, 1, 1)); break;
-				case 2: m = new PhongMaterial(Vec3f(1, 0, 1)); break;
-				case 3: m = new PhongMaterial(Vec3f(0, 1, 1)); break;
-				case 4: m = new PhongMaterial(Vec3f(1, 1, 0)); break;
-				case 5: m = new PhongMaterial(Vec3f(0.3, 0, 0.7)); break;
-				case 6: m = new PhongMaterial(Vec3f(0.7, 0, 0.3)); break;
-				case 7: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
-				case 8: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
-				case 9: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
-				case 10: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
-				case 11: m = new PhongMaterial(Vec3f(0, 1, 0)); break;
-				case 12: m = new PhongMaterial(Vec3f(0, 0, 1)); break;
-				default: m = new PhongMaterial(Vec3f(1, 0, 0)); break;
+				switch (_cells[index].size()) {
+					case 1: m = new PhongMaterial(Vec3f(1, 1, 1)); break;
+					case 2: m = new PhongMaterial(Vec3f(1, 0, 1)); break;
+					case 3: m = new PhongMaterial(Vec3f(0, 1, 1)); break;
+					case 4: m = new PhongMaterial(Vec3f(1, 1, 0)); break;
+					case 5: m = new PhongMaterial(Vec3f(0.3, 0, 0.7)); break;
+					case 6: m = new PhongMaterial(Vec3f(0.7, 0, 0.3)); break;
+					case 7: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
+					case 8: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
+					case 9: m = new PhongMaterial(Vec3f(0, 0.3, 0.7)); break;
+					case 10: m = new PhongMaterial(Vec3f(0, 0.7, 0.3)); break;
+					case 11: m = new PhongMaterial(Vec3f(0, 1, 0)); break;
+					case 12: m = new PhongMaterial(Vec3f(0, 0, 1)); break;
+					default: m = new PhongMaterial(Vec3f(1, 0, 0)); break;
 				}
-				hit.set(mi.t_cur, m, mi.normal, r);
+				hit.set(mi.t_cur, m, mi.normal, ray);
 				return true;
 
 				//OpenGL

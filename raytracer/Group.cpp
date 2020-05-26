@@ -17,8 +17,16 @@ void Group::paint()
 		_objects[i]->paint();
 }
 
+void Group::insertIntoGrid(Grid* grid, Matrix* matrix) {
+	for (int i = 0; i < num_objs; ++i) {
+		_objects[i]->insertIntoGrid(grid, matrix);
+	}
+}
+
 // only used in _scene_parser.h
 void Group::addObject(int index, Object3D* obj)
 {
 	_objects[index] = obj;
+	if (obj->getBoundingBox())
+		_boundingBox->Extend(obj->getBoundingBox());
 }
