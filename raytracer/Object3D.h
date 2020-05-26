@@ -5,6 +5,7 @@
 #include "_hit.h"
 #include "_matrix.h"
 #include "_boundingbox.h"
+#include <vector>
 
 enum ObjectType {
 	SphereObj, 
@@ -206,4 +207,38 @@ public:
 
 };
 
+class MarchingInfo 
+{
+public:
+	float tmin;
+	int index[3];
+	Vec3f t_next, d_t;
+	int sign[3];
+	Vec3f normal_to_cell;
+	bool hit = false;
+};
+class Grid : public Object3D
+{
+	int _nx, _ny, _nz;
+	std::vector<std::vector<Object3D*> > _cells;
+
+public:
+	Grid(BoundingBox* bb, int nx, int ny, int nz)
+	{
+		_nx = nx;
+		_ny = ny;
+		_nz = nz;
+
+		_cells.resize(_nx * _ny * _ny);
+		_boundingBox = bb;
+		_type = ObjectType::Grid;
+	}
+	~Grid() {}
+
+	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
+	virtual void paint() const;
+
+	void initializeRayMarch(MarchingInfo& mi, const Ray& ray, float tmin) const;
+
+};
 #endif // _OBJECT3D_H_

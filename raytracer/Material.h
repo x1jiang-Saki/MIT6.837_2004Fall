@@ -37,6 +37,10 @@ class PhongMaterial : public Material
 	float _indexOfRefraction;
 
 public:
+	PhongMaterial(const Vec3f& diffuseColor)
+	{
+		_diffuseColor = diffuseColor;
+	}
 	PhongMaterial(const Vec3f& diffuseColor, const Vec3f& specularColor, float exponent, const Vec3f& reflectiveColor,const Vec3f& transparentColor,float indexOfRefraction)
 	{
 		_diffuseColor = diffuseColor;
