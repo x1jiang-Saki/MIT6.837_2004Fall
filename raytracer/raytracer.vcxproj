@@ -23,11 +23,13 @@
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Object3D.h" />
+    <ClInclude Include="RayTracer.h" />
     <ClInclude Include="_glCanvas.h" />
     <ClInclude Include="_hit.h" />
     <ClInclude Include="_image.h" />
     <ClInclude Include="_matrix.h" />
     <ClInclude Include="_ray.h" />
+    <ClInclude Include="_rayTree.h" />
     <ClInclude Include="_scene_parser.h" />
     <ClInclude Include="_vectors.h" />
   </ItemGroup>
@@ -39,12 +41,14 @@
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PhongMaterial.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="_glCanvas.cpp" />
     <ClCompile Include="_image.cpp" />
     <ClCompile Include="_matrix.cpp" />
+    <ClCompile Include="_rayTree.cpp" />
     <ClCompile Include="_scene_parser.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

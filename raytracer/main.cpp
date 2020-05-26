@@ -2,6 +2,7 @@
 #include "_image.h"
 #include <algorithm>
 #include "_glCanvas.h"
+#include "RayTracer.h"
 // A1
 char* input_file = nullptr;
 int width = 100;
@@ -21,10 +22,18 @@ bool gouraud = false;
 int theta_steps = 10;
 int phi_steps = 5;
 
+// A4
+int max_bounces = 0;
+float cutoff_weight = 0.01;
+bool shadows = false;
+bool useTransparentShadows = true; // actually not working QAQ
+
+
 SceneParser* scene;
 
 void parseCode(int argc, char** argv);
 void render();
+void traceRay(float x, float y);
 
 int main(int argc, char** argv)
 {
@@ -34,7 +43,7 @@ int main(int argc, char** argv)
 	if (gui)
 	{
 		GLCanvas canvas;
-		canvas.initialize(scene, render);
+		canvas.initialize(scene, render, traceRay);
 	}
 	else
 		render();
@@ -91,6 +100,18 @@ void parseCode(int argc, char** argv)
 		else if (!strcmp(argv[i], "-gouraud")) {
 			gouraud = true;
 		}
+		// A4
+		else if (!strcmp(argv[i], "-shadows")) {
+			shadows = true;
+		}
+		else if (!strcmp(argv[i], "-bounces")) {
+			i++; assert(i < argc);
+			max_bounces = atof(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-weight")) {
+			i++; assert(i < argc);
+			cutoff_weight = atof(argv[i]);
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
@@ -101,7 +122,6 @@ void parseCode(int argc, char** argv)
 void render()
 {
 	Camera* camera = scene->getCamera();
-	Object3D* objects = scene->getGroup();
 
 	Image output_scene = Image(width, height);
 	output_scene.SetAllPixels(scene->getBackgroundColor());
@@ -110,55 +130,44 @@ void render()
 	Image output_normal = Image(width, height);
 	output_normal.SetAllPixels(Vec3f(0.0, 0.0, 0.0));
 
+	RayTracer raytracer(scene, max_bounces, cutoff_weight, shadows);
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++)
 		{
 			Ray ray = camera->generateRay(Vec2f(float(i) / width, float(j) / height));
 			Hit hit(INFINITY, nullptr,Vec3f(0.0,0.0,0.0));
-			if (objects->intersect(ray, hit, camera->getTMin()))
-			{
-				Vec3f baseColor = hit.getMaterial()->getDiffuseColor();
+			
+			Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, 0.0, 1.0, hit);
 
-				Vec3f ambientTerm = scene->getAmbientLight() * baseColor;
-				Vec3f resultCol = ambientTerm;
+			float t = hit.getT();
+			if (t > depth_max) t = depth_max;
+			if (t < depth_min) t = depth_min;
+			t = (depth_max - t) / (depth_max - depth_min);
+			Vec3f depth = Vec3f(t, t, t);
 
-				Vec3f N = hit.getNormal();
-				//if (N.Dot3(ray.getDirection()) > 0)
-				//{
-				//	if (shade_back)
-				//		N = -1.0 * N;
-				//	else
-				//		output_scene.SetPixel(i, j, Vec3f(0.0, 0.0, 0.0)); continue;
-				//}
+			Vec3f N = hit.getNormal();
+			Vec3f normal(abs(N.x()), abs(N.y()), abs(N.z()));
 
-				for (int lit = 0; lit < scene->getNumLights(); lit++)
-				{
-					Light* curLight = scene->getLight(lit);
-					Vec3f pos = hit.getIntersectionPoint();
-					Vec3f L, lightCol;
-					float distance; // now we only have Directional Light
-					curLight->getIllumination(pos, L, lightCol, distance);
-
-					resultCol += hit.getMaterial()->Shade(ray, hit, L, lightCol);
-				}
-				
-				float t = hit.getT();
-				if (t > depth_max) t = depth_max;
-				if (t < depth_min) t = depth_min;
-				t = (depth_max - t) / (depth_max - depth_min);
-				Vec3f depth = Vec3f(t, t, t);
-
-				Vec3f normal(abs(N.x()), abs(N.y()), abs(N.z()));
-
-				output_scene.SetPixel(i, j, resultCol);
-				output_depth.SetPixel(i, j, depth);
-				output_normal.SetPixel(i, j, normal);
-			}
+			output_scene.SetPixel(i, j, resultCol);
+			output_depth.SetPixel(i, j, depth);
+			output_normal.SetPixel(i, j, normal);
+			
 		}
 	}
 
 	if (output_file) output_scene.SaveTGA(output_file);
 	if (depth_file) output_depth.SaveTGA(depth_file);
 	if (normal_file) output_normal.SaveTGA(normal_file);
+}
+
+void traceRay(float x, float y)
+{
+	Camera* camera = scene->getCamera();
+	RayTracer raytracer(scene, max_bounces, cutoff_weight, shadows);
+
+	Ray ray = camera->generateRay(Vec2f(x, y));
+	Hit hit(INFINITY, nullptr, Vec3f(0.0, 0.0, 0.0));
+
+	Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, cutoff_weight, 0.0, hit);
 }

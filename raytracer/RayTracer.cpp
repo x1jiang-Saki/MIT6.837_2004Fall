@@ -65,6 +65,7 @@ Vec3f RayTracer::traceRay(Ray& ray, float tmin, int bounces, float weight, float
 			float distance; 
 			curLight->getIllumination(pos, L, lightCol, distance);
 
+			Vec3f mask(1.0, 1.0, 1.0);
 			if (_shadows)
 			{
 				Ray shadowRay(hit.getIntersectionPoint(), L);
@@ -73,11 +74,13 @@ Vec3f RayTracer::traceRay(Ray& ray, float tmin, int bounces, float weight, float
 				{
 					// in the shadow
 					if (shadowHit.getT() < distance)
+					{
+						mask = Vec3f(0, 0, 0);
 						RayTree::AddShadowSegment(shadowRay, 0.0, shadowHit.getT());
+					}
 
 					if (useTransparentShadows)
 					{
-						Vec3f mask(1.0, 1.0, 1.0);
 						float curT = 0.0;
 						float lastT = -1;
 						Vec3f lastColor = Vec3f(-1, -1, -1);
@@ -97,11 +100,11 @@ Vec3f RayTracer::traceRay(Ray& ray, float tmin, int bounces, float weight, float
 				else // no intersection or intersectPoint is behind the light
 					RayTree::AddShadowSegment(shadowRay, 0.0, 20.0);
 			}
-			resultCol += hit.getMaterial()->Shade(ray, hit, L, lightCol);
+			resultCol += hit.getMaterial()->Shade(ray, hit, L, lightCol) * mask;
 		}
 
 		// REFLECTION
-		if (bounces < max_bounces && weight < cutoff_weight && hit.getMaterial()->getReflectiveColor().Length() > 0)
+		if (bounces < max_bounces && hit.getMaterial()->getReflectiveColor().Length() > 0)
 		{
 			Ray reflRay(hit.getIntersectionPoint(), mirror(hit.getNormal(), ray.getDirection()));
 			Hit reflHit(INFINITY, nullptr, Vec3f(0.0, 0.0, 0.0));
@@ -111,7 +114,7 @@ Vec3f RayTracer::traceRay(Ray& ray, float tmin, int bounces, float weight, float
 		}
 
 		// REFRACTION
-		if (bounces < max_bounces && weight < cutoff_weight && hit.getMaterial()->getTransparentColor().Length() > 0)
+		if (bounces < max_bounces && hit.getMaterial()->getTransparentColor().Length() > 0)
 		{
 			Vec3f refrDir;
 			bool inside = hit.getNormal().Dot3(ray.getDirection()) > 0;

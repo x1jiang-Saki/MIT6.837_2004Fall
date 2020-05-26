@@ -48,6 +48,12 @@
     <ClInclude Include="_glCanvas.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="_rayTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_image.cpp">
@@ -90,6 +96,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_rayTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RayTracer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

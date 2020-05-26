@@ -81,12 +81,6 @@ Vec3f PhongMaterial::Shade(const Ray& ray, const Hit& hit, const Vec3f& dirToLig
 	V.Normalize();
 	
 	Vec3f diffuseTerm = _diffuseColor * lightColor * max(N.Dot3(L), 0.0f);
-	
-	Vec3f diffuseTerm;
-	if (shade_back)
-		diffuseTerm = _diffuseColor * lightColor * max(N.Dot3(L), 0.0f);
-	else
-		diffuseTerm = _diffuseColor * lightColor * abs(N.Dot3(L));
 
 	Vec3f H = L + V;
 	H.Normalize();
