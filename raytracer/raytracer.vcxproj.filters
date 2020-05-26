@@ -69,6 +69,21 @@
     <ClInclude Include="_perlin_noise.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="_sample.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="_film.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_image.cpp">
@@ -138,6 +153,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ProceduralMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="_film.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Filter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

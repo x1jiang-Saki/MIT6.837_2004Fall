@@ -4,6 +4,8 @@
 #include "_glCanvas.h"
 #include "RayTracer.h"
 #include "_raytracing_stats.h"
+#include "Filter.h"
+#include "Sampler.h"
 
 // A1
 char* input_file = nullptr;
@@ -36,6 +38,19 @@ int nx = 0, ny = 0, nz = 0;
 
 // A6
 bool stats = false;
+
+// A7
+bool random_samples = false;
+bool uniform_samples = false;
+bool jittered_samples = false;
+int num_samples = 1;
+char* render_samples_file = nullptr;
+char* render_filter_file = nullptr;
+int zoom_factor = 0;
+bool box_filter = false;
+bool tent_filter = false;
+bool gaussian_filter = false;
+float filter_radius = 0;
 
 SceneParser* scene;
 
@@ -144,6 +159,59 @@ void parseCode(int argc, char** argv)
 		else if (!strcmp(argv[i], "-stats")) {
 			stats = true;
 		}
+		// A7
+		else if (!strcmp(argv[i], "-random_samples")) {
+			random_samples = true;
+			i++;
+			assert(i < argc);
+			num_samples = atoi(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-uniform_samples")) {
+			uniform_samples = true;
+			i++;
+			assert(i < argc);
+			num_samples = atoi(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-jittered_samples")) {
+			jittered_samples = true;
+			i++;
+			assert(i < argc);
+			num_samples = atoi(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-box_filter")) {
+			box_filter = true;
+			i++;
+			assert(i < argc);
+			filter_radius = atof(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-tent_filter")) {
+			tent_filter = true;
+			i++;
+			assert(i < argc);
+			filter_radius = atof(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-gaussian_filter")) {
+			gaussian_filter = true;
+			i++;
+			assert(i < argc);
+			filter_radius = atof(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-render_samples")) {
+			i++;
+			assert(i < argc);
+			render_samples_file = argv[i];
+			i++;
+			assert(i < argc);
+			zoom_factor = atoi(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-render_filter")) {
+			i++;
+			assert(i < argc);
+			render_filter_file = argv[i];
+			i++;
+			assert(i < argc);
+			zoom_factor = atoi(argv[i]);
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
@@ -168,29 +236,72 @@ void render()
 	else
 		RayTracingStats::Initialize(width, height, nullptr, 0, 0, 0);
 
+	Film* film = new Film(width, height, num_samples);
+	Sampler* sampler = nullptr;
+	if (random_samples)
+		sampler = new RandomSampler(num_samples);
+	if (jittered_samples)
+		sampler = new JitteredSampler(num_samples);
+	if (uniform_samples || !sampler)
+		sampler = new UniformSampler(num_samples);
+
+	Filter* filter = nullptr;
+	if (box_filter)
+		filter = new BoxFilter(filter_radius);
+	if (tent_filter)
+		filter = new TentFilter(filter_radius);
+	if (gaussian_filter)
+		filter = new GaussianFilter(filter_radius);
+
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			RayTracingStats::IncrementNumNonShadowRays();
+			//float maxImageSize = (std::max)(width, height);
+			//float xMargin = (maxImageSize - width) / 2.f;
+			//float yMargin = (maxImageSize - height) / 2.f;
+			//Vec2f pixelPos((float(i) + xMargin) / maxImageSize, (float(j) + yMargin) / maxImageSize);
+			//Vec2f pixelSize(1.f / width, 1.f / height);
 
-			Ray ray = camera->generateRay(Vec2f(float(i) / width, float(j) / height));
-			Hit hit(INFINITY, nullptr,Vec3f(0.0,0.0,0.0));
+			float t;
+			Vec3f N;
+			for (int n = 0; n < film->getNumSamples(); ++n) {
+				//Vec2f samplePos = sampler->getSamplePosition(i);
+				//auto ray = camera->generateRay(pixelPos + samplePos * pixelSize);
+				
+				Vec2f offset = sampler->getSamplePosition(n);
+				float x = float(i + offset.x()) / float(width);
+				float y = float(j + offset.y()) / float(height);
+				Ray ray = camera->generateRay(Vec2f(x, y));
+				Hit hit(INFINITY, nullptr, Vec3f(0, 0, 0));
+				auto color = raytracer.traceRay(ray, camera->getTMin(), 0, 1.f, 1.f, hit);
+				film->setSample(i, j, n, offset, color);
 			
-			Vec3f resultCol = raytracer.traceRay(ray, camera->getTMin(), 0.0, 1.0, 1.0, hit);
+				t = hit.getT();
+				N = hit.getNormal();
+			}
+			if (filter)
+				output_scene.SetPixel(i, j, filter->getColor(i, j, film));
+			else
+				output_scene.SetPixel(i, j, film->getSample(i, j, 0).getColor());
 
-			float t = hit.getT();
-			if (t > depth_max) t = depth_max;
-			if (t < depth_min) t = depth_min;
-			t = (depth_max - t) / (depth_max - depth_min);
-			Vec3f depth = Vec3f(t, t, t);
+			if (depth_file)
+			{
+				//float t = hit.getT();
+				if (t > depth_max) t = depth_max;
+				if (t < depth_min) t = depth_min;
+				t = (depth_max - t) / (depth_max - depth_min);
+				Vec3f depth = Vec3f(t, t, t);
 
-			Vec3f N = hit.getNormal();
-			Vec3f normal(abs(N.x()), abs(N.y()), abs(N.z()));
-
-			output_scene.SetPixel(i, j, resultCol);
-			output_depth.SetPixel(i, j, depth);
-			output_normal.SetPixel(i, j, normal);
+				output_depth.SetPixel(i, j, depth);
+			}
+			if (normal_file)
+			{
+				//Vec3f N = hit.getNormal();
+				Vec3f normal(abs(N.x()), abs(N.y()), abs(N.z()));
+				
+				output_normal.SetPixel(i, j, normal);
+			}
 			
 		}
 	}
@@ -198,6 +309,13 @@ void render()
 	if (output_file) output_scene.SaveTGA(output_file);
 	if (depth_file) output_depth.SaveTGA(depth_file);
 	if (normal_file) output_normal.SaveTGA(normal_file);
+	
+	if (render_samples_file)
+		film->renderSamples(render_samples_file, zoom_factor);
+	
+	if (render_filter_file)
+		film->renderFilter(render_filter_file, zoom_factor, filter);
+	
 	if (stats) RayTracingStats::PrintStatistics();
 }
 

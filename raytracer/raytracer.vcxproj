@@ -20,11 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Filter.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Object3D.h" />
+    <ClInclude Include="randomFix.h" />
     <ClInclude Include="RayTracer.h" />
+    <ClInclude Include="Sampler.h" />
     <ClInclude Include="_boundingbox.h" />
+    <ClInclude Include="_film.h" />
     <ClInclude Include="_glCanvas.h" />
     <ClInclude Include="_hit.h" />
     <ClInclude Include="_image.h" />
@@ -35,10 +39,12 @@
     <ClInclude Include="_ray.h" />
     <ClInclude Include="_raytracing_stats.h" />
     <ClInclude Include="_rayTree.h" />
+    <ClInclude Include="_sample.h" />
     <ClInclude Include="_scene_parser.h" />
     <ClInclude Include="_vectors.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Object3D.cpp" />
@@ -54,6 +60,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="_boundingbox.cpp" />
+    <ClCompile Include="_film.cpp" />
     <ClCompile Include="_glCanvas.cpp" />
     <ClCompile Include="_image.cpp" />
     <ClCompile Include="_marchingInfo.cpp" />
