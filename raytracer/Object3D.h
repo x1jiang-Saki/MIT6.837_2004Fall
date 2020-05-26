@@ -4,18 +4,31 @@
 #include "_ray.h"
 #include "_hit.h"
 #include "_matrix.h"
+#include "_boundingbox.h"
+
+enum ObjectType {
+	SphereObj, 
+	PlaneObj, 
+	TriangleObj, 
+	Grid,
+	Group
+};
 
 class Object3D
 {
 protected:
 	Material* _material;
-
+	BoundingBox* _boundingBox;
+	ObjectType _type;
 public:
 	Object3D()
 	{
 		_material = nullptr;
+		_boundingBox = nullptr;
 	}
 	~Object3D() {}
+
+	virtual BoundingBox* getBoundingBox() const { return _boundingBox; }
 
 	// tmin is used to restrict the range of intersection
 	// tmin depends on the type of camera (see below)
@@ -37,6 +50,11 @@ public:
 		_center = center;
 		_radius = radius;
 		_material = material;
+		_type = ObjectType::SphereObj;
+		_boundingBox = new BoundingBox(
+			Vec3f(_center - Vec3f(_radius, _radius, _radius)),
+			Vec3f(_center + Vec3f(_radius, _radius, _radius))
+		);
 	}
 	~Sphere(){}
 
@@ -53,6 +71,11 @@ public:
 	{
 		num_objs = objNum;
 		_objects = new Object3D*[num_objs];
+		_type = ObjectType::Group;
+		_boundingBox = new BoundingBox(
+			Vec3f(INFINITY, INFINITY, INFINITY),
+			Vec3f(-INFINITY, -INFINITY, -INFINITY)
+		);
 	}
 	~Group()
 	{
@@ -76,6 +99,11 @@ public:
 		_normal.Normalize();
 		_d = d;
 		_material = material;
+		_type = ObjectType::PlaneObj;
+		// To avoid creating an infinite bounding box, 
+		// don't try to compute the bounding box of a Plane 
+		// Don't include this infinite primitive when computing the bounding box of a group. 
+		_boundingBox = nullptr;
 	}
 	~Plane(){}
 
@@ -95,8 +123,27 @@ public:
 		_normal.Normalize();
 
 		_material = material;
+		_type = ObjectType::TriangleObj;
+		_boundingBox = new BoundingBox(
+			Vec3f(INFINITY, INFINITY, INFINITY),
+			Vec3f(-INFINITY, -INFINITY, -INFINITY)
+		);
+		_boundingBox->Extend(_a);
+		_boundingBox->Extend(_b);
+		_boundingBox->Extend(_c);
 	}
 	~Triangle(){}
+
+	Vec3f getVertex(int index) const
+	{
+		switch (index)
+		{
+		case 0:return _a;
+		case 1:return _b;
+		case 2:return _c;
+		default: assert(0); return Vec3f();
+		}
+	}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
 	virtual void paint();
@@ -112,6 +159,46 @@ public:
 	{
 		_object = object;
 		_matrix = matrix;
+
+		_boundingBox = new BoundingBox(
+			Vec3f(INFINITY, INFINITY, INFINITY),
+			Vec3f(-INFINITY, -INFINITY, -INFINITY)
+		);
+		if (_type != ObjectType::TriangleObj)
+		{
+			Vec3f bb[2] = {
+				_object->getBoundingBox()->getMin(),
+				_object->getBoundingBox()->getMax()
+			};
+
+			Vec3f bbVertes_trans[8];
+			for (int i = 0; i < 8; i++)
+			{
+				float x = bb[i % 2].x();
+				float y = bb[(i / 2) % 2].y();
+				float z = bb[i / 4].z();
+				Vec3f bbVert(x, y, z);
+				_matrix.Transform(bbVert);
+				bbVertes_trans[i] = bbVert;
+			}
+
+			for (int i = 0; i < 8; i++)
+				_boundingBox->Extend(bbVertes_trans[i]);
+		}
+		else
+		{
+			Triangle* tri = (Triangle*)_object;
+			Vec3f triVert[3] = {
+				tri->getVertex(0),
+				tri->getVertex(1),
+				tri->getVertex(2)
+			};
+			for (int i = 0; i < 3; i++)
+				_matrix.Transform(triVert[i]);
+
+			for (int i = 0; i < 3; i++)
+				_boundingBox->Extend(triVert[i]);
+		}
 	}
 
 	virtual bool intersect(const Ray& ray, Hit& hit, float tmin);
