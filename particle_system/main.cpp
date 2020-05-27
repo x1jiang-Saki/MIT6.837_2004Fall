@@ -2,8 +2,8 @@
 #include <assert.h>
 using namespace std;
 
-#include "glCanvas.h"
-#include "parser.h"
+#include "_glCanvas.h"
+#include "_parser.h"
 
 // ====================================================================
 // ====================================================================
