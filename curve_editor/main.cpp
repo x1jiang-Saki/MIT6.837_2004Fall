@@ -2,9 +2,9 @@
 #include <assert.h>
 using namespace std;
 
-#include "arg_parser.h"
-#include "glCanvas.h"
-#include "spline_parser.h"
+#include "_arg_parser.h"
+#include "_glCanvas.h"
+#include "_spline_parser.h"
 
 // ====================================================================
 // ====================================================================

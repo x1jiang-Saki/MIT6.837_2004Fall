@@ -3,7 +3,7 @@
 
 #include <assert.h>
 #include <stdio.h>
-#include "vectors.h"
+#include "_vectors.h"
 
 // =================================================================
 // a simple triangle mesh class that can be saved to obj format

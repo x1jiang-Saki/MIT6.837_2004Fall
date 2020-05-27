@@ -2,7 +2,7 @@
 #define _SPLINE_PARSER_H_
 
 #include <assert.h>
-#include "vectors.h"
+#include "_vectors.h"
 class Spline;
 class Curve;
 class Surface;

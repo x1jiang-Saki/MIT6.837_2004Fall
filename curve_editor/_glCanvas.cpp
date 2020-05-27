@@ -1,11 +1,13 @@
 // Included files for OpenGL Rendering
+#define GLUT_DISABLE_ATEXIT_HACK
+
 #include <GL/gl.h>
 #include <GL/glut.h>
 
-#include "glCanvas.h"
-#include "arg_parser.h"
-#include "spline.h"
-#include "spline_parser.h"
+#include "_glCanvas.h"
+#include "_arg_parser.h"
+#include "Spline.h"
+#include "_spline_parser.h"
 
 // ========================================================
 

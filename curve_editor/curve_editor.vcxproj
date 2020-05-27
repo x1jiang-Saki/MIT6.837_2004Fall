@@ -105,6 +105,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -123,6 +124,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Curve.h" />
+    <ClInclude Include="Spline.h" />
+    <ClInclude Include="Surface.h" />
+    <ClInclude Include="_arg_parser.h" />
+    <ClInclude Include="_glCanvas.h" />
+    <ClInclude Include="_matrix.h" />
+    <ClInclude Include="_spline_parser.h" />
+    <ClInclude Include="_triangle_mesh.h" />
+    <ClInclude Include="_vectors.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Curve.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Spline.cpp" />
+    <ClCompile Include="Surface.cpp" />
+    <ClCompile Include="_glCanvas.cpp" />
+    <ClCompile Include="_matrix.cpp" />
+    <ClCompile Include="_spline_parser.cpp" />
+    <ClCompile Include="_triangle_mesh.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
